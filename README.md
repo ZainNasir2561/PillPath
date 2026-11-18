@@ -1,6 +1,7 @@
 # PillPath — Interactive Prototype Source Code
 
-This is the complete browser-based source for the PillPath medication reminder demonstration, including the latest 3D case and live timer updates.
+This is the complete browser-based source for the PillPath medication reminder demonstration, including the latest 3D case and live timer updates. 
+Run using: python3 -m http.server 8000
 
 ## Run it locally
 
