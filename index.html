@@ -1,0 +1,164 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#f5f7fc" />
+  <meta name="description" content="PillPath interactive prototype: a connected smart pill case and medication reminder app." />
+  <title>PillPath — Connected care, demonstrated.</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <div class="site-shell" id="siteShell" data-dose-state="idle">
+    <header class="topbar">
+      <a class="brand" href="#top" aria-label="PillPath home">
+        <span class="brand-symbol" aria-hidden="true">
+          <svg width="25" height="25" viewBox="0 0 25 25" fill="none"><rect x="3.8" y="8" width="17.4" height="9" rx="4.5" transform="rotate(-43 12.5 12.5)" stroke="currentColor" stroke-width="2"/><path d="M9.2 8.7 15.7 15.2" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+        </span>
+        <span>Pill<span class="brand-path">Path</span></span>
+      </a>
+      <div class="topbar-center"><span class="live-dot"></span> CONCEPT PROTOTYPE <span class="topbar-divider"></span> INTERACTIVE DEMONSTRATION</div>
+      <button class="reset-button" id="resetBtn" type="button">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 1 0 3-6.7M3 4v5h5"/></svg>
+        Reset demo
+      </button>
+    </header>
+
+    <main id="top">
+      <section class="intro">
+        <div class="intro-copy">
+          <div class="eyebrow"><span class="eyebrow-line"></span> MEET PILLPATH <span class="eyebrow-index">/ 01</span></div>
+          <h1>Smarter reminders.<br /><em>One simple tap.</em></h1>
+          <p>See how the PillPath smart case and companion app work together to make taking medication a little easier.</p>
+        </div>
+        <div class="demo-controls" aria-label="Demonstration controls">
+          <div class="controls-caption"><span class="controls-pulse"></span> LIVE DEMO CONTROLS</div>
+          <div class="controls-buttons">
+            <button id="triggerBtn" class="primary-button" type="button">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3a2 2 0 0 1 2 2v1.1A7 7 0 0 1 19 13v3l2 2H3l2-2v-3a7 7 0 0 1 5-6.9V5a2 2 0 0 1 2-2ZM10 21h4"/></svg>
+              <span id="triggerLabel">Trigger reminder</span>
+            </button>
+            <button id="timerBtn" class="secondary-button" type="button">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 1.5M9 2h6"/></svg>
+              <span id="timerLabel">20s countdown</span>
+            </button>
+          </div>
+          <div class="controls-helper" id="demoHint" aria-live="polite">Start a reminder to see the devices respond.</div>
+        </div>
+      </section>
+
+      <section class="devices" aria-label="Connected PillPath devices">
+        <article class="device-card case-card">
+          <div class="panel-heading">
+            <div>
+              <div class="overline">01 / PHYSICAL PRODUCT</div>
+              <h2>Smart carrying case</h2>
+            </div>
+            <div class="connection-pill"><span></span> Connected</div>
+          </div>
+
+          <div class="case-stage" id="caseStage">
+            <div class="stage-aura"></div>
+            <div class="stage-ring stage-ring-one"></div>
+            <div class="stage-ring stage-ring-two"></div>
+            <div class="stage-shadow"></div>
+            <div class="device-perspective" id="casePerspective">
+              <div class="case-model" id="caseModel" role="button" tabindex="0" aria-label="Interactive smart pill case. Click or press Enter to acknowledge a reminder, and drag to rotate the model.">
+                <div class="case-lid">
+                  <div class="lid-glint"></div>
+                  <div class="lid-logo"><span class="lid-logo-mark">✦</span> PillPath</div>
+                  <div class="lid-subtitle">YOUR DAILY DOSE, SIMPLIFIED</div>
+                  <div class="lid-hinge"></div>
+                </div>
+
+                <div class="case-body">
+                  <div class="case-underbody" aria-hidden="true"></div>
+                  <div class="case-front-edge"></div>
+                  <div class="case-right-edge"></div>
+                  <div class="case-top-surface">
+                    <div class="device-display" aria-live="polite">
+                      <span class="display-led"></span>
+                      <div class="display-copy"><span id="displaySmall">PILLPATH · READY</span><strong id="displayMain">All set for today</strong></div>
+                      <div class="case-counter" aria-label="Live case clock and reminder countdown"><span id="counterLabel">LOCAL TIME</span><strong id="counterDigits">--:--:--</strong></div>
+                      <svg class="display-battery" viewBox="0 0 22 12" aria-hidden="true"><rect x="1" y="1" width="17" height="10" rx="2"/><path d="M20 4v4"/><rect class="battery-fill" x="3" y="3" width="13" height="6" rx=".8"/></svg>
+                    </div>
+                    <div class="confirmation-button" id="caseButtonVisual" aria-hidden="true"><div class="button-core"><svg viewBox="0 0 24 24"><path d="m6 12 4 4 8-8"/></svg></div></div>
+                    <div class="case-compartments">
+                      <div class="compartment morning" data-compartment="morning">
+                        <span class="compartment-title">01 <b>MORNING</b></span>
+                        <div class="pill-area"><span class="pill pill-yellow"></span><span class="pill pill-cream"></span><span class="pill pill-blue"></span></div>
+                        <span class="well-cover"></span>
+                      </div>
+                      <div class="compartment noon" data-compartment="noon"><span class="compartment-title">02 <b>NOON</b></span><div class="pill-area"><span class="pill pill-peach"></span><span class="pill pill-cream"></span></div><span class="well-cover"></span></div>
+                      <div class="compartment evening" data-compartment="evening"><span class="compartment-title">03 <b>EVENING</b></span><div class="pill-area"><span class="pill pill-blue"></span><span class="pill pill-yellow"></span></div><span class="well-cover"></span></div>
+                      <div class="compartment night" data-compartment="night"><span class="compartment-title">04 <b>NIGHT</b></span><div class="pill-area"><span class="pill pill-cream"></span><span class="pill pill-peach"></span></div><span class="well-cover"></span></div>
+                    </div>
+                    <div class="case-micro-label">PILLPATH / PP—01</div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="floating-case-tag" id="floatingCaseTag"><span class="tag-indicator"></span><span id="floatingCaseText">Standby mode</span></div>
+            <div class="rotate-hint"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12a8 8 0 0 1 14-5.3M20 12a8 8 0 0 1-14 5.3M18 3v4h-4M6 21v-4h4"/></svg> Drag to rotate</div>
+          </div>
+
+          <div class="case-footer">
+            <div class="footer-info"><div class="footer-icon"><svg viewBox="0 0 24 24"><path d="M3 8a13 13 0 0 1 18 0M6.5 11.5a8 8 0 0 1 11 0M10 15a3 3 0 0 1 4 0"/><circle cx="12" cy="19" r="1"/></svg></div><div><strong>Connected case</strong><span>Real-time sync simulation</span></div></div>
+            <div class="footer-hint" id="caseFooterHint">Waiting for a reminder</div>
+          </div>
+        </article>
+
+        <article class="device-card app-card">
+          <div class="panel-heading">
+            <div>
+              <div class="overline">02 / DIGITAL EXPERIENCE</div>
+              <h2>Companion app</h2>
+            </div>
+            <div class="app-label"><span class="app-label-check">✓</span> Synced</div>
+          </div>
+
+          <div class="phone-stage">
+            <div class="phone-orbit"></div>
+            <div class="phone" aria-label="PillPath phone app preview">
+              <div class="phone-speaker"></div>
+              <div class="phone-screen">
+                <div class="phone-statusbar"><span id="phoneTime">9:41</span><div class="status-icons"><svg viewBox="0 0 46 13" aria-hidden="true"><path d="M1 9h3V6H1zM6 9h3V4H6zM11 9h3V2h-3zM19 5c4-4 9-4 13 0M22 8c2-2 5-2 7 0M25.5 10.8h.1" stroke="currentColor" fill="none" stroke-width="1.6" stroke-linecap="round"/><rect x="35" y="2" width="9" height="9" rx="2" fill="none" stroke="currentColor"/><rect x="37" y="4" width="5" height="5" rx=".7" fill="currentColor"/></svg></div></div>
+                <div class="phone-app-top"><div class="phone-brand"><span class="phone-brand-mark">✦</span> pillpath</div><div class="avatar">ZN</div></div>
+                <div class="phone-greeting"><span id="phoneDay">WEDNESDAY, NOVEMBER 18</span><h3>Good day, Zain <span>✳</span></h3><p>Here’s your medication overview.</p></div>
+                <div class="phone-progress"><div class="progress-top"><div><span class="progress-eyebrow">DAILY PROGRESS</span><strong id="progressLabel">0 of 1 doses taken</strong></div><div class="progress-percentage" id="progressPercentage">0%</div></div><div class="progress-track"><div id="progressFill"></div></div><span class="progress-subcopy" id="progressSubcopy">You're one step away from your daily goal.</span></div>
+                <div class="phone-section-heading"><strong>Today's schedule</strong><span>1 dose</span></div>
+                <div class="medication-item" id="medicationItem"><div class="med-time"><strong id="doseTime">9:00</strong><span id="doseMeridiem">AM</span></div><div class="med-divider"></div><div class="med-details"><strong>Vitamin D3 + Omega-3</strong><span>2 supplements · Morning</span><div class="med-status" id="medStatus"><span></span> Scheduled</div></div></div>
+                <div class="phone-tip"><div class="phone-tip-icon">✦</div><span id="phoneTipText">Your PillPath case keeps everything in one place.</span></div>
+                <div class="phone-nav"><div class="nav-active"><svg viewBox="0 0 24 24"><path d="m3 10 9-7 9 7v10H3V10Zm6 10v-7h6v7"/></svg><span>Home</span></div><div><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="16" rx="2"/><path d="M8 3v4M16 3v4M4 10h16"/></svg><span>Schedule</span></div><div><svg viewBox="0 0 24 24"><path d="M12 3a9 9 0 1 0 0 18 9 9 0 0 0 0-18ZM12 8v5l3 2"/></svg><span>History</span></div></div>
+              </div>
+              <div class="phone-home-indicator"></div>
+            </div>
+            <div class="push-notification" id="pushNotification" hidden role="alert" aria-live="assertive"><div class="notification-top"><div class="notification-app"><span class="notification-icon">✦</span> PILLPATH</div><span>now</span></div><strong>Time for your medication</strong><p>Vitamin D3 + Omega-3 · 2 supplements. Tap your smart case to confirm.</p></div>
+            <div class="phone-success" id="phoneSuccess" hidden><span>✓</span> Dose successfully logged</div>
+          </div>
+
+          <div class="app-footer"><div class="footer-info"><div class="footer-icon footer-icon-pink"><svg viewBox="0 0 24 24"><path d="M18 8a6 6 0 1 0-12 0c0 7-3 7-3 9h18c0-2-3-2-3-9ZM10 21h4"/></svg></div><div><strong>Smart notifications</strong><span id="notificationFooterText">Ready to send a reminder</span></div></div><div class="signal-bars"><i></i><i></i><i></i><i></i></div></div>
+        </article>
+      </section>
+
+      <section class="bottom-section">
+        <div class="how-it-works">
+          <div class="bottom-heading"><span class="overline">THE PILLPATH EXPERIENCE</span><h2>One connected routine.</h2></div>
+          <div class="flow-steps">
+            <div class="flow-step" id="stepReminder"><span class="step-icon">01</span><div><strong>Reminder sent</strong><p>App alerts you when it's time.</p></div></div>
+            <span class="step-connector" aria-hidden="true"></span>
+            <div class="flow-step" id="stepCase"><span class="step-icon">02</span><div><strong>Case lights up</strong><p>A visual cue on the case.</p></div></div>
+            <span class="step-connector" aria-hidden="true"></span>
+            <div class="flow-step" id="stepConfirm"><span class="step-icon">03</span><div><strong>Tap to confirm</strong><p>App automatically marks it taken.</p></div></div>
+          </div>
+        </div>
+        <div class="activity-card"><div class="activity-heading"><div><span class="overline">CONNECTION STATUS</span><h3>Live activity</h3></div><span class="activity-icon">↗</span></div><div class="activity-row"><span class="activity-dot" id="activityDot"></span><div><strong id="activityTitle">Devices are connected</strong><p id="activityDescription">Waiting for the next dose reminder.</p></div><span class="activity-time" id="activityTime">LIVE</span></div></div>
+      </section>
+
+      <footer class="site-footer"><span>© 2026 PillPath · Engineering concept prototype</span><span>Interactive simulation only — no real medication tracking or physical-device connection.</span></footer>
+    </main>
+    <div class="toast" id="toast" aria-live="polite" role="status"></div>
+  </div>
+  <script src="./app.js"></script>
+</body>
+</html>
